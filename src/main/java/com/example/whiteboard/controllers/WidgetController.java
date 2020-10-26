@@ -40,10 +40,10 @@ public class WidgetController {
     }
     @DeleteMapping("/api/widgets/{wid}")
     public Integer deleteWidget(String widgetId) {
-        return null;
+        return service.deleteWidget(widgetId);
     }
     @PutMapping("/api/widgets/{wid}")
     public Integer updateWidget(String widgetId, Widget newWidget) {
-        return null;
+        return updateWidget(widgetId, newWidget);
     }
 }
