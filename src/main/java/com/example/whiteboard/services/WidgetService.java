@@ -9,15 +9,6 @@ import java.util.List;
 public class WidgetService {
     List<Widget> widgetList = new ArrayList<>();
 
-    {
-        widgetList.add(new Widget("123", "HTML", "Widget 1", "topic123"));
-        widgetList.add(new Widget("234", "YOU_TUBE", "Widget 2", "topic123"));
-        widgetList.add(new Widget("345", "SLIDE", "Widget 3", "topic123"));
-        widgetList.add(new Widget("456", "HEADER", "Widget 4", "topic123"));
-        widgetList.add(new Widget("567", "HEADING", "Widget A", "topic234"));
-        widgetList.add(new Widget("678", "PARAGRAPH", "Widget B", "topic234"));
-    }
-
     public Widget createWidget(Widget widget) {
         String newId = (new Date()).toString();
         widget.setId(newId);
@@ -36,9 +27,9 @@ public class WidgetService {
     }
 
     public Integer updateWidget(String widgetId, Widget newWidget) {
-        for(Widget w: widgetList) {
-            if (w.getId().equals(widgetId)){
-                w = newWidget;
+        for (int i = 0; i < widgetList.size(); i++) {
+            if (widgetList.get(i).getId().equals(widgetId)) {
+                widgetList.set(i, newWidget);
                 return 1;
             }
         }
@@ -59,13 +50,12 @@ public class WidgetService {
     }
 
     public Integer deleteWidget(String widgetId) {
-        for(Widget w: widgetList) {
-            if (w.getId().equals(widgetId)){
-                widgetList.remove(w);
+        for (int i = 0; i < widgetList.size(); i++) {
+            if (widgetList.get(i).getId().equals(widgetId)){
+                widgetList.remove(i);
                 return 1;
             }
         }
         return 0;
     }
-
 }

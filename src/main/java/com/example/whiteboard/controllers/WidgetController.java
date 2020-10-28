@@ -21,11 +21,13 @@ public class WidgetController {
     public List<Widget> findAllWidgets() {
         return service.findAllWidgets();
     }
+
     @GetMapping("/api/widgets/{wid}")
     public Widget findWidgetById(
             @PathVariable("wid") String widgetId) {
         return service.findWidgetById(widgetId);
     }
+
     @PostMapping("/api/topics/{topicId}/widgets")
     public Widget createWidgetForTopic(
             @PathVariable("topicId") String topicId,
@@ -33,17 +35,23 @@ public class WidgetController {
         widget.setTopicId(topicId);
         return service.createWidget(widget);
     }
+
     @PostMapping("/api/widgets")
     public Widget createWidget(
             @RequestBody Widget widget) {
         return service.createWidget(widget);
     }
+
     @DeleteMapping("/api/widgets/{wid}")
-    public Integer deleteWidget(String widgetId) {
+    public Integer deleteWidget(
+            @PathVariable("wid") String widgetId) {
         return service.deleteWidget(widgetId);
     }
+
     @PutMapping("/api/widgets/{wid}")
-    public Integer updateWidget(String widgetId, Widget newWidget) {
-        return updateWidget(widgetId, newWidget);
+    public Integer updateWidget(
+            @PathVariable("wid") String widgetId,
+            @RequestBody Widget newWidget) {
+        return service.updateWidget(widgetId, newWidget);
     }
 }
