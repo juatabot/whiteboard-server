@@ -12,6 +12,7 @@ public class WidgetService {
     public Widget createWidget(Widget widget) {
         String newId = (new Date()).toString();
         widget.setId(newId);
+        widget.setOrder(0);
         widgetList.add(widget);
         return widget;
     }

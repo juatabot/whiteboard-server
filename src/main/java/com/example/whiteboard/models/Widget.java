@@ -11,6 +11,16 @@ public class Widget {
     private Integer width;
     private String topicId;
 
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    private Integer order;
+
     public String getTopicId() {
         return topicId;
     }
