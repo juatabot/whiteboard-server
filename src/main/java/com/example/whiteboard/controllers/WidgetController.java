@@ -2,6 +2,7 @@ package com.example.whiteboard.controllers;
 
 import com.example.whiteboard.models.Widget;
 import com.example.whiteboard.services.WidgetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,7 +10,8 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class WidgetController {
-    WidgetService service = new WidgetService();
+    @Autowired
+    WidgetService service;
 
     @GetMapping("/api/topics/{tid}/widgets")
     public List<Widget> findWidgetsForTopic(
@@ -24,7 +26,7 @@ public class WidgetController {
 
     @GetMapping("/api/widgets/{wid}")
     public Widget findWidgetById(
-            @PathVariable("wid") String widgetId) {
+            @PathVariable("wid") Integer widgetId) {
         return service.findWidgetById(widgetId);
     }
 
@@ -43,14 +45,14 @@ public class WidgetController {
     }
 
     @DeleteMapping("/api/widgets/{wid}")
-    public Integer deleteWidget(
-            @PathVariable("wid") String widgetId) {
-        return service.deleteWidget(widgetId);
+    public void deleteWidget(
+            @PathVariable("wid") Integer widgetId) {
+        service.deleteWidget(widgetId);
     }
 
     @PutMapping("/api/widgets/{wid}")
-    public Integer updateWidget(
-            @PathVariable("wid") String widgetId,
+    public Widget updateWidget(
+            @PathVariable("wid") Integer widgetId,
             @RequestBody Widget newWidget) {
         return service.updateWidget(widgetId, newWidget);
     }

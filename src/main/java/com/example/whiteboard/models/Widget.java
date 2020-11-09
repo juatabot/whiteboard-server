@@ -1,25 +1,40 @@
 package com.example.whiteboard.models;
+import javax.annotation.processing.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Widget {
-    private String id;
-    private String type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String widget_type;
     private String name;
     private String src;
-    private String html;
     private String className;
     private Integer height;
     private Integer width;
     private String topicId;
+    private Integer widget_order;
+    private String url;
 
-    public Integer getOrder() {
-        return order;
+    public Widget(Integer id, String widget_type, String name, String topicId) {
+        this.id = id;
+        this.widget_type = widget_type;
+        this.name = name;
+        this.topicId = topicId;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public Widget(Integer id, String widget_type, String name) {
+        this.id = id;
+        this.widget_type = widget_type;
+        this.name = name;
     }
 
-    private Integer order;
+    public Widget() {
+    }
 
     public String getTopicId() {
         return topicId;
@@ -29,36 +44,36 @@ public class Widget {
         this.topicId = topicId;
     }
 
-    public Widget(String id, String type, String name, String topicId) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.topicId = topicId;
+    public String getUrl() {
+        return url;
     }
 
-    public Widget(String id, String type, String name) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public Widget() {
+    public Integer getWidget_order() {
+        return widget_order;
     }
 
-    public String getId() {
+    public void setWidget_order(Integer widget_order) {
+        this.widget_order = widget_order;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getWidget_type() {
+        return widget_type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setWidget_type(String widget_type) {
+        this.widget_type = widget_type;
     }
 
     public String getName() {
@@ -75,14 +90,6 @@ public class Widget {
 
     public void setSrc(String src) {
         this.src = src;
-    }
-
-    public String getHtml() {
-        return html;
-    }
-
-    public void setHtml(String html) {
-        this.html = html;
     }
 
     public String getClassName() {
